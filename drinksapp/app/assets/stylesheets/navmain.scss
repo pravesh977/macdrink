@@ -1,0 +1,30 @@
+.navmain {
+    float: right;
+    margin-right: 20px;
+}
+
+.navmain ul li {
+    list-style-type: none;
+    display: inline;
+}
+
+.navmain ul li a {
+    text-decoration: none;
+    font-size: 28px;
+    font-weight: bolder;
+    color: #1C2047;
+    margin: 10px;
+    background: black;
+    color: white;
+}
+
+.navmain ul li a:hover {
+    transition: 1s;
+    transform: scale(1.5, 1.5);
+    color: black;
+    background: yellow;
+   font-size: 32px;
+}
+
+.nav ul {
+}

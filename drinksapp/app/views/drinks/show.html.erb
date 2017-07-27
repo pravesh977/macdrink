@@ -1,0 +1,51 @@
+<%= render "navmain/navmain" %>
+<body class="<%= params[:action] %> ">
+<div class="singledrink">
+    <p><%= @drink.name %></p>
+    <br>
+    <%= image_tag @drink.drinkimage1.url(:large) %>
+    <h2>Drinkscription</h2>
+    <p><%= @drink.description %></p><br>
+</div>
+<div class="usershow">
+    <ul>
+    <li>Posted by: <%= @drink.user.username %></li>
+    <li><%= image_tag @drink.user.profileimage.url(:thumb) %></li>
+    </ul>
+</div>
+<% if @drink.user == current_user %>
+<%= link_to "Edit This Drink", edit_drink_path(@drink) %>
+<% end %>
+<p class="linkmainpage"><%= link_to "Go Back to List", drinks_path %></p>
+
+<div class="commentform">
+<h2>Add a comment</h2>
+<%= form_for ([@drink, @drink.comments.build]) do |f| %>
+    <p>
+        <%= f.label :Commenter %><br>
+        <%= f.text_field :commenter %>
+    </p>
+    <p>
+        <%= f.label :Comment %><br>
+        <%= f.text_area :commentbody %>
+    </p>
+        <%= f.submit %>
+<% end %>
+</div>
+
+<div class="commentsection">
+    <h2>Comments</h2>
+    <% @drink.comments.each do |elem| %>
+        <div class="singlecomment">
+            <li class="commenter"><%= elem.commenter %></li>
+            <li class="commentbody"><%= elem.commentbody %></li>
+            <%= elem.created_at %>
+        </div>
+    <% end %>
+</div>
+<%= render 'footermenu/footermenu' %> 
+</body>
+
+
+
+
